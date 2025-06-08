@@ -1,11 +1,17 @@
 const express = require('express');
 const app = express();
+const dotenv = require('dotenv');
+dotenv.config({ path:`${__dirname}/config.env` });
+const cors = require('cors');
 const db = require('./pkg/db/index');
 const jwt = require('express-jwt');
 
+const { handleChatRequest} = require('./handler/aiController');
 const soilHandler = require('./handler/soilHandler');
 const auth = require('./handler/authHandler');
+const crops = require('./handler/cropsHandler');
 
+app.use(cors());
 
 app.use(express.urlencoded({ extended : true }));
 app.use(express.json());
@@ -18,6 +24,8 @@ db.init();
 
 app.post('/api/v1/signup', auth.signup);
 app.post('/api/v1/login', auth.login);
+
+app.post('/api/v1/ai', handleChatRequest);
 
 app.use(
   jwt
@@ -46,7 +54,13 @@ app.get('/api/v1/soil/:id', soilHandler.getSoilById);
 app.post('/api/v1/soil', soilHandler.createSoil);
 app.patch('/api/v1/soil/:id', soilHandler.updateSoil);
 app.delete('/api/v1/soil/:id', soilHandler.deleteSoil);
+app.post('/api/v1/soil/samples', soilHandler.addSampleSoils);
+app.post('/api/v1/soil/chat', soilHandler.chatAboutSoil);
 
+
+app.post('/api/v1/crops', crops.createCrops);
+app.get('/api/v1/crops', crops.getAllCrops);
+app.post('/api/v1/crops/samples', crops.addSampleCrops);
 
 app.listen(process.env.PORT, (err) => {
     if(err) {

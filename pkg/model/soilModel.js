@@ -22,6 +22,9 @@ const soilSchema = new mongoose.Schema({
         type: String,
         required: false,
     },
+    culture: 
+        [{ type: String}],
+    
     createdAt: {
         type: Date,
         default: Date.now,
