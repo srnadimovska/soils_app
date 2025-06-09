@@ -3,33 +3,14 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 
 
-function Login() {
+function Signup() {
+    const[name,setName] = useState('');
     const[email,setEmail] = useState('');
     const [password,setPassword] = useState('');
     const[error, setError] = useState('');
     const navigate = useNavigate();
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     setError('');
-    //     try{
-    //         const res = await fetch('http://localhost:9000/api/v1/login',{
-    //             method: 'POST',
-    //             headers: {'Content-Type': 'application/json'},
-    //             body: JSON.stringify({email, password}),
-
-    //         });
-    //         const data = await res.json();
-    //         if(res.ok && data.token) {
-    //             localStorage.setItem('token', data.token);
-    //             navigate('/');
-    //         } else {
-    //             setError(res.data.error || 'Greska pri najavuvanje')
-    //         }
-    //     } catch(err){
-    //         setError('Serverska greska')
-    //     }
-    // }
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -37,12 +18,13 @@ function Login() {
 
         try {
 
-            const res = await axios.post('http://localhost:10000/api/v1/login',{email,password}, {headers: {'Content-Type' : 'application/json'}});
-              if(res.data.token) {
-                localStorage.setItem('token', res.data.token);
-                navigate('/')
+            const res = await axios.post('http://localhost:10000/api/v1/signup',{name,email,password}, {headers: {'Content-Type' : 'application/json'}});
+             
+            if(res.status === 201 || res.data.message === 'User created') {
+                
+                navigate('/login')
               } else {
-                setError( res.data.error || 'Greska pri najavuvanje');
+                setError( res.data.error || 'Greska pri registracija');
               }
         } catch(err){
             console.log(err);
@@ -54,8 +36,14 @@ function Login() {
     
     return (
     <div style={{maxWidth: 350, margin: '2rem auto'}}>
-        <h2>Najava</h2>
+        <h2>Registracija</h2>
         <form onSubmit={handleSubmit}>
+            <div>
+                <label>Name:</label>
+                <input type="text" value={name} onChange={(e) => setName(e.target.value)} required
+                 style={{width: '100%', marginBottom: 8}}/>
+
+            </div>
             <div>
                 <label>Email:</label>
                 <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required
@@ -73,13 +61,13 @@ function Login() {
             {error && <div style={{ color: 'red', marginBottom: 8 }}>{error}</div>}
             
 
-            <button type='submit' style={{width: '100%'}}>Login </button>
+            <button type='submit' style={{width: '100%'}}>Signup </button>
 
         </form>
 
         </div>
     
     )
-}
+};
 
-export default Login;
+export default Signup;

@@ -18,12 +18,20 @@ function Root() {
                     <Link to='/' style={{ marginRight: '1rem' }}>Pocetna</Link>
                     <Link to='/pocvi' style={{ marginRight: '1rem' }} >Pocvi</Link>
                     <Link to='/kulturi' style={{ marginRight: '1rem' }} >Zemjodelski kulturi</Link>
+                    <Link to='/gjubriva' style={{ marginRight: '1rem' }} >Gjubriva</Link>
 
                     </>
                 )} 
                 {!isLoggedIn && (
+                    <div>
+                        
                     <Link to='/login' style={{ marginRight: '1rem' }}>
                         Najava</Link>
+                    <Link to='/signup' style={{ marginRight: '1rem' }}>
+                        Registracija</Link>
+                    
+                    </div>
+                        
                 )}
                 {isLoggedIn && (
                     <button onClick={handleLogout} style={{ marginRight: '1rem' }}>

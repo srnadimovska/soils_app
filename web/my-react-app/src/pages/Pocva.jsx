@@ -9,7 +9,7 @@ function Pocva() {
         const fetchPocva = async() => {
             try {
 
-                const res = await axios.get('http://localhost:9000/api/v1/soil');
+                const res = await axios.get('http://localhost:10000/api/v1/soil');
                 setData(res.data)
                 // da pustime bearer token za doma
 

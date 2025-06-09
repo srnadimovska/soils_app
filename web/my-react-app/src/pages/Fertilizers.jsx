@@ -2,14 +2,14 @@ import  axios   from 'axios';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-function Crops() {
+function Fertilizers() {
     const [data, setData] = useState([]);
     const [error, setError] = useState('');
 
     useEffect(() => {
-        const fetchCrops = async() => {
+        const fetchFertilizers = async() => {
             try {
-                const res = await axios.get('http://localhost:10000/api/v1/crops');
+                const res = await axios.get('http://localhost:10000/api/v1/fertilizers');
                 setData(res.data);
 
             } catch(err){
@@ -18,16 +18,17 @@ function Crops() {
             }
         };
 
-        fetchCrops();
+        fetchFertilizers();
     },[]);
+
     return (
         <div>
-            <h2>Site zemjodelski kulturi</h2>
+            <h2>Site gjubriva</h2>
             {error && <p style={{ color: 'red' }}>{error}</p>}
             <ul>
-                {data.map((crop,index) => (
+                {data.map((fert,index) => (
                     <li key={index}>
-                        {crop.name} - {crop.location}
+                        {fert.name} - {fert.quantity}
                     </li>
                 ))}
             </ul>
@@ -35,4 +36,4 @@ function Crops() {
     );
 }
 
-export default Crops
+export default Fertilizers

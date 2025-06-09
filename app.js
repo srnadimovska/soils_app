@@ -10,6 +10,7 @@ const { handleChatRequest} = require('./handler/aiController');
 const soilHandler = require('./handler/soilHandler');
 const auth = require('./handler/authHandler');
 const crops = require('./handler/cropsHandler');
+const fertilizerHandler = require('./handler/fertilizersHandler');
 
 app.use(cors());
 
@@ -61,6 +62,12 @@ app.post('/api/v1/soil/chat', soilHandler.chatAboutSoil);
 app.post('/api/v1/crops', crops.createCrops);
 app.get('/api/v1/crops', crops.getAllCrops);
 app.post('/api/v1/crops/samples', crops.addSampleCrops);
+
+app.post('/api/v1/fertilizers', fertilizerHandler.createFertilizers);
+app.get('/api/v1/fertilizers', fertilizerHandler.getAllFertilizers);
+app.post('/api/v1/fertilizers/samples', fertilizerHandler.addSampleFertilizers);
+
+
 
 app.listen(process.env.PORT, (err) => {
     if(err) {

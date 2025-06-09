@@ -8,4 +8,4 @@ const cropsSchema = new mongoose.Schema({
 });
 
 const Crops = mongoose.model('Crops', cropsSchema);
-module.export = Crops;
+module.exports = Crops;

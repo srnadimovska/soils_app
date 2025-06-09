@@ -122,7 +122,7 @@ exports.addSampleSoils = async (req, res) => {
     const sampleSoils = [
       {
         name: 'Црница',
-        type: 'Црнозем',
+        type: 'aluvijalna',
         ph: 6.8,
         location: 'Пелагонија',
         culture: ['пченица', 'јачмен', 'сончоглед'],
@@ -130,7 +130,7 @@ exports.addSampleSoils = async (req, res) => {
       },
       {
         name: 'Алувијална почва',
-        type: 'Алувијална',
+        type: 'pesok',
         ph: 7.2,
         location: 'Вардарска долина',
         culture: ['јаболка', 'пиперка', 'домати'],
@@ -139,7 +139,7 @@ exports.addSampleSoils = async (req, res) => {
       },
       {
         name: 'Рендзина',
-        type: 'Рендзина',
+        type: 'aluvijalna',
         ph: 7.5,
         location: 'Охридско-Преспански регион',
         culture: ['винова лоза', 'пченка'],
@@ -147,7 +147,7 @@ exports.addSampleSoils = async (req, res) => {
       },
       {
         name: 'Планинска почва',
-        type: 'Планинска',
+        type: 'deluvijalna',
         ph: 5.8,
         location: 'Шар Планина',
         culture: ['детелина', 'ливадарка'],
@@ -155,7 +155,7 @@ exports.addSampleSoils = async (req, res) => {
       },
       {
         name: 'Глинеста почва',
-        type: 'Глинеста',
+        type: 'deluvijalna',
         ph: 6.2,
         location: 'Тиквешко',
         culture: ['грозје', 'краставици'],
@@ -163,7 +163,7 @@ exports.addSampleSoils = async (req, res) => {
       },
       {
         name: 'Песоклива почва',
-        type: 'Песоклива',
+        type: 'crvenica',
         ph: 7.0,
         location: 'Гевгелиско',
         culture: ['лубеница', 'диња'],
@@ -171,7 +171,7 @@ exports.addSampleSoils = async (req, res) => {
       },
       {
         name: 'Солончаци',
-        type: 'Солончаци',
+        type: 'deluvijalna',
         ph: 8.5,
         location: 'Кумановско',
         culture: ['јачмен', 'пченка'],
@@ -179,7 +179,7 @@ exports.addSampleSoils = async (req, res) => {
       },
       {
         name: 'Каменеста почва',
-        type: 'Каменеста',
+        type: 'aluvijalna',
         ph: 6.0,
         location: 'Крушевско',
         culture: ['бор', 'буква'],
@@ -187,7 +187,7 @@ exports.addSampleSoils = async (req, res) => {
       },
       {
         name: 'Иловица',
-        type: 'Иловица',
+        type: 'humus',
         ph: 6.5,
         location: 'Струмичко',
         culture: ['домати', 'јагоди'],
@@ -195,7 +195,7 @@ exports.addSampleSoils = async (req, res) => {
       },
       {
         name: 'Планинска црница',
-        type: 'Црнозем',
+        type: 'deluvijalna',
         ph: 6.9,
         location: 'Маврово',
         culture: ['пченица', 'компир'],

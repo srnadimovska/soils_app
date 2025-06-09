@@ -6,6 +6,8 @@ import ProtectRoute from './components/ProtectRoute';
 import Login from './pages/Login';
 import Pocva from './pages/Pocva';
 import Crops from './pages/Crops';
+import Fertilizers from './pages/Fertilizers';
+import Signup from './pages/Signup';
 
 const router = createBrowserRouter([
   {
@@ -17,10 +19,10 @@ const router = createBrowserRouter([
         path: 'login',
         element: <Login />,
       },
-      // {
-      //   path: 'signup',
-      //   element: <tst />,
-      // },
+      {
+        path: 'signup',
+        element: <Signup />
+      },
 
       {
         element: <ProtectRoute />,
@@ -33,6 +35,10 @@ const router = createBrowserRouter([
           {
             path: 'kulturi',
             element: <Crops />
+          },
+          {
+            path: 'gjubriva',
+            element: <Fertilizers />
           },
         ],
       },

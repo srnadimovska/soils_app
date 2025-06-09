@@ -7,11 +7,15 @@ const soilSchema = new mongoose.Schema({
         trim: true,
     },
     type: {
-        type: String,
-        required: [true, 'Vnesi tip!'],
-        enum: ['glina','pesok','humus','podvodna','deluvijalna','aluvijalna','crvenica','smolnica'],
-        default: 'drugo',
+    type: String,
+    enum: {
+      values: ['aluvijalna', 'humus', 'deluvijalna', 'pesok', 'crvenica'],
+      message: 'Типот `{VALUE}` не е дозволен!',
     },
+    required: [true, 'Vnesi tip!'],
+  },
+        
+    
     ph: {
         type: Number,
         min:[0,'ph ne moze da e ponisko od 0!'],
@@ -30,6 +34,7 @@ const soilSchema = new mongoose.Schema({
         default: Date.now,
     },
 });
+
 
 const Soil = mongoose.model('Soil', soilSchema);
 module.exports = Soil;
