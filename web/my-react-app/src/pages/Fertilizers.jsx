@@ -9,7 +9,11 @@ function Fertilizers() {
     useEffect(() => {
         const fetchFertilizers = async() => {
             try {
-                const res = await axios.get('http://localhost:10000/api/v1/fertilizers');
+
+                const token = localStorage.getItem('token');
+                const res = await axios.get('http://localhost:10000/api/v1/fertilizers',{headers : {
+                    Authorization: `Bearer ${token}`
+                }});
                 setData(res.data);
 
             } catch(err){
@@ -28,7 +32,8 @@ function Fertilizers() {
             <ul>
                 {data.map((fert,index) => (
                     <li key={index}>
-                        {fert.name} - {fert.quantity}
+                        <h1>{fert.name}</h1> 
+                        <p>{fert.quantity}</p> 
                     </li>
                 ))}
             </ul>

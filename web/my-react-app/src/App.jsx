@@ -8,6 +8,7 @@ import Pocva from './pages/Pocva';
 import Crops from './pages/Crops';
 import Fertilizers from './pages/Fertilizers';
 import Signup from './pages/Signup';
+import PocvaChat from './pages/PocvaChat';
 
 const router = createBrowserRouter([
   {
@@ -27,7 +28,9 @@ const router = createBrowserRouter([
       {
         element: <ProtectRoute />,
         children: [
-          { index: true, element: <Homepage />},
+          { index: true, 
+            element: <Homepage />
+          },
           {
             path: 'pocvi',
             element: <Pocva />
@@ -40,6 +43,10 @@ const router = createBrowserRouter([
             path: 'gjubriva',
             element: <Fertilizers />
           },
+          {
+            path:'pocva-chat',
+            element: <PocvaChat />
+          }
         ],
       },
     ],

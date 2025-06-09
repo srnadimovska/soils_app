@@ -9,7 +9,10 @@ function Crops() {
     useEffect(() => {
         const fetchCrops = async() => {
             try {
-                const res = await axios.get('http://localhost:10000/api/v1/crops');
+                const token = localStorage.getItem('token');
+                const res = await axios.get('http://localhost:10000/api/v1/crops',{headers : {
+                    Authorization: `Bearer ${token}`
+                }} );
                 setData(res.data);
 
             } catch(err){
@@ -27,7 +30,8 @@ function Crops() {
             <ul>
                 {data.map((crop,index) => (
                     <li key={index}>
-                        {crop.name} - {crop.location}
+                        <h1>{crop.name}</h1> 
+                        <p>{crop.location}</p> 
                     </li>
                 ))}
             </ul>

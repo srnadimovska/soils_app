@@ -44,7 +44,7 @@ app.use(
       },
     })
     .unless({
-      path: ['/api/v1/signup', '/api/v1/login',],
+      path: ['/api/v1/signup', '/api/v1/login'],
     })
 );
 

@@ -19,7 +19,7 @@ function Root() {
                     <Link to='/pocvi' style={{ marginRight: '1rem' }} >Pocvi</Link>
                     <Link to='/kulturi' style={{ marginRight: '1rem' }} >Zemjodelski kulturi</Link>
                     <Link to='/gjubriva' style={{ marginRight: '1rem' }} >Gjubriva</Link>
-
+                    <Link to='/pocva-chat' style={{ marginRight: '1rem' }}>Chat</Link>
                     </>
                 )} 
                 {!isLoggedIn && (
