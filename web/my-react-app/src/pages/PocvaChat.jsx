@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { jwtDecode} from 'jwt-decode';
-import styles from './PochvaChat.module.css';
+import styles from './PocvaChat.module.css';
 import { useState } from 'react';
 import { set } from 'cohere-ai/core/schemas';
 
@@ -27,11 +27,11 @@ function PocvaChat() {
 
         if(!input.trim()) return
 
-        setMessages((prev) => [...prev,{role:'user', content:input}]);
+        setMessages((prev) => [...prev,{role:'user', content:input , timestamp: new Date().toLocaleString()}]);
         setLoading(true)
         try{
             const token = localStorage.getItem('token');
-            const res = await axios.post('/api/v1/soil/chat',{
+            const res = await axios.post('http://localhost:9000/api/v1/soil/chat',{
                 prompt: input
             }, {
                 headers: {
@@ -41,7 +41,7 @@ function PocvaChat() {
             }
             );
 
-            setMessages((prev) => [...prev,{role:'ai', content:res.data.answer || 'Nema odgovor'}]);
+            setMessages((prev) => [...prev,{role:'ai', content:res.data.answer , timestamp: new Date().toLocaleString() || 'Nema odgovor'}]);
         } catch{
            
                 setMessages((prev) => [...prev,{role:'ai', content: 'Greska pri komunikacija'}]);
@@ -52,33 +52,36 @@ function PocvaChat() {
     };
 
     return <div className={styles.container}>
-        <h2>Prasaj nesto ako ti treba</h2>
+        <h2>Прашај ме се што те интересира!</h2>
         {userName && (
             <div className={styles.header}>
-                Najaven korisnik: <b>{userName}</b>
+                Гостин: <b>{userName}</b>
             </div>
         )}
+        <div className={styles.chatWrapper}>
         <div className={styles.chatBox}>
             {messages.map((msg, idx) => (
                 <div key={idx} className={msg.role === "user"? `${styles.message} ${styles.messageUser}` 
                 : styles.message}>
-                    <span className={msg.role === "user" ? `${styles.bubble}${styles.bubbleUser}` :
+                    <span className={msg.role === "user" ? `${styles.bubble} ${styles.bubbleUser}` :
                 styles.bubble}>
                         {msg.content}
+                        <p className={styles.timestamp}>{msg.timestamp}</p>
                     </span>
                 </div>
             ))}
-            {loading && <div className={styles.loading}>Se vcituva ...</div>}
+            {loading && <div className={styles.loading}>Се вчитува ...</div>}
         </div>
 
         <form onSubmit={handleSend} className={styles.form}> 
             <input className={styles.input} type='text' value={input} onChange={(e) => setInput(e.target.value)} 
-            placeholder='Postavi prasanje za pocvi'
+            placeholder='Прашај ме...'
             disabled={loading}/>
             <button type='submit' disabled={loading || !input.trim()}>
-                Isprati</button>
+                Испрати</button>
 
         </form>
+        </div>
 
     </div>
 

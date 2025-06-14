@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 
+import {jwtDecode} from 'jwt-decode';
+
+
 
 function Login() {
     const[email,setEmail] = useState('');
@@ -37,9 +40,17 @@ function Login() {
 
         try {
 
-            const res = await axios.post('http://localhost:10000/api/v1/login',{email,password}, {headers: {'Content-Type' : 'application/json'}});
+            const res = await axios.post('http://localhost:9000/api/v1/login',{email,password}, {headers: {'Content-Type' : 'application/json'}});
               if(res.data.token) {
                 localStorage.setItem('token', res.data.token);
+
+                const decoded = jwtDecode(res.data.token);
+                if(decoded.role === 'admin') {
+                    localStorage.setItem('isAdmin', 'true');
+                } else {
+                    localStorage.setItem('isAdmin','false');
+                }
+
                 navigate('/')
               } else {
                 setError( res.data.error || 'Greska pri najavuvanje');

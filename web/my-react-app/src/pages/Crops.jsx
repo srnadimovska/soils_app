@@ -1,6 +1,7 @@
 import  axios   from 'axios';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import styles from './Crops.module.css';
 
 function Crops() {
     const [data, setData] = useState([]);
@@ -10,7 +11,7 @@ function Crops() {
         const fetchCrops = async() => {
             try {
                 const token = localStorage.getItem('token');
-                const res = await axios.get('http://localhost:10000/api/v1/crops',{headers : {
+                const res = await axios.get('http://localhost:9000/api/v1/crops',{headers : {
                     Authorization: `Bearer ${token}`
                 }} );
                 setData(res.data);
@@ -24,12 +25,12 @@ function Crops() {
         fetchCrops();
     },[]);
     return (
-        <div>
-            <h2>Site zemjodelski kulturi</h2>
+        <div className={styles.container}>
+            <h2>Сите земјоделски култури</h2>
             {error && <p style={{ color: 'red' }}>{error}</p>}
-            <ul>
+            <ul className={styles.cropsList}>
                 {data.map((crop,index) => (
-                    <li key={index}>
+                    <li key={index} className={styles.cropsCard}>
                         <h1>{crop.name}</h1> 
                         <p>{crop.location}</p> 
                     </li>

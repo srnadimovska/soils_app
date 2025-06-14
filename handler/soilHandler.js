@@ -1,5 +1,5 @@
 const Soil = require('../pkg/model/soilModel');
-const { chatWithAI} = require('./aiSystem');
+const { chatWithAi } = require('./aiSystem');
 
 exports.createSoil = async(req,res) => {
     try {
@@ -21,17 +21,12 @@ exports.createSoil = async(req,res) => {
 exports.getAllSoil = async(req,res) => {
     try {
         const soils = await Soil.find();
-        res.status(200).json({
-            status:'success',
-            data: {
-                soils,
-            },
-        });
+        res.json(soils);
 
     } catch(err) {
         res.status(500).json({
-            status:'fail',
-            message: err.message,
+            
+            error: err.message,
         });
     }
 };
@@ -100,16 +95,16 @@ exports.getSoilById = async(req,res) => {
     const context = soils
       .map(
         (p) =>
-          `Име: ${p.name}, Тип: ${p.type}, pH: ${p.ph},  Локација: ${p.location}}`
+          `Име: ${p.name}, Тип: ${p.type}, pH: ${p.ph},  Локација: ${p.location}`
       )
       .join('\n');
 
     const systemMessage =
       'Ти си експерт за почви во Македонија. Користи ги следниве информации за да одговараш на прашања:';
 
-    const fullPrompt = `${systemMessage}\n${context}\n\nПрањање: ${req.body.prompt}`;
+    const fullPrompt = `${systemMessage}\n${context}\n\nPrasanje: ${req.body.prompt}`;
 
-    const aiResponse = await chatWithAI(fullPrompt);
+    const aiResponse = await chatWithAi(fullPrompt);
 
     res.json(aiResponse);
   } catch (err) {

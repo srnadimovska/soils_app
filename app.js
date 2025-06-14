@@ -52,7 +52,7 @@ app.use(
 
 app.get('/api/v1/soil', soilHandler.getAllSoil);
 app.get('/api/v1/soil/:id', soilHandler.getSoilById);
-app.post('/api/v1/soil', soilHandler.createSoil);
+app.post('/api/v1/soil', auth.isAdmin,soilHandler.createSoil);
 app.patch('/api/v1/soil/:id', soilHandler.updateSoil);
 app.delete('/api/v1/soil/:id', soilHandler.deleteSoil);
 app.post('/api/v1/soil/samples', soilHandler.addSampleSoils);
@@ -71,7 +71,9 @@ app.post('/api/v1/fertilizers/samples', fertilizerHandler.addSampleFertilizers);
 
 app.listen(process.env.PORT, (err) => {
     if(err) {
-        return console.log('Service can not start');
+        return console.log(err.message,'Service can not start');
+        
     }
     console.log(`Service started successfully in port ${process.env.PORT}`);
+    
 });

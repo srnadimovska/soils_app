@@ -1,6 +1,7 @@
 import  axios   from 'axios';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import styles from './Fertilizers.module.css';
 
 function Fertilizers() {
     const [data, setData] = useState([]);
@@ -11,7 +12,7 @@ function Fertilizers() {
             try {
 
                 const token = localStorage.getItem('token');
-                const res = await axios.get('http://localhost:10000/api/v1/fertilizers',{headers : {
+                const res = await axios.get('http://localhost:9000/api/v1/fertilizers',{headers : {
                     Authorization: `Bearer ${token}`
                 }});
                 setData(res.data);
@@ -26,12 +27,12 @@ function Fertilizers() {
     },[]);
 
     return (
-        <div>
-            <h2>Site gjubriva</h2>
+        <div className={styles.container}>
+            <h2>Сите ѓубрива</h2>
             {error && <p style={{ color: 'red' }}>{error}</p>}
-            <ul>
+            <ul className={styles.fertList}>
                 {data.map((fert,index) => (
-                    <li key={index}>
+                    <li key={index} className={styles.fertCard}>
                         <h1>{fert.name}</h1> 
                         <p>{fert.quantity}</p> 
                     </li>

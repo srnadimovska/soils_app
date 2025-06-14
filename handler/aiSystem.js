@@ -26,4 +26,4 @@ const chatWithAi = async (prompt) => {
     }
 };
 
-module.exports = { chatWithAi};
+module.exports = { chatWithAi };

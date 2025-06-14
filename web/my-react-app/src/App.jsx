@@ -9,6 +9,7 @@ import Crops from './pages/Crops';
 import Fertilizers from './pages/Fertilizers';
 import Signup from './pages/Signup';
 import PocvaChat from './pages/PocvaChat';
+import Error from './pages/Error';
 
 const router = createBrowserRouter([
   {

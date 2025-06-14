@@ -18,7 +18,7 @@ function Signup() {
 
         try {
 
-            const res = await axios.post('http://localhost:10000/api/v1/signup',{name,email,password}, {headers: {'Content-Type' : 'application/json'}});
+            const res = await axios.post('http://localhost:9000/api/v1/signup',{name,email,password}, {headers: {'Content-Type' : 'application/json'}});
              
             if(res.status === 201 || res.data.message === 'User created') {
                 

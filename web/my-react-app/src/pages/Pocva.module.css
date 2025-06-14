@@ -1,0 +1,71 @@
+.container {
+    max-width: auto;
+    margin: 2rem auto;
+    padding: 1rem;
+    font-family: sans-serif;
+}
+.container h2 {
+  font-size: 100px;        
+  color: #2c3e50;          
+  text-align: center;      
+  margin-bottom: 1.5rem;  
+  font-weight: 700;           
+}
+
+.soilList {
+    display: grid;
+    grid-template-columns: repeat(3 , 1fr);
+    gap: 15px;
+    list-style: none;
+    padding: 10px;
+    margin: 10px;
+}
+.soilCard {
+    background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  
+}
+
+.soilCard h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.soilCard p {
+  margin: 4px 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.form {
+    margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.form input,
+.form select {
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.form button {
+  padding: 0.7rem 1rem;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.form button:hover {
+  background-color: #357bd8;
+}

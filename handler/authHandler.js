@@ -8,6 +8,7 @@ exports.signup = async (req, res) => {
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
+      role: req.body.role,
     });
     res.status(201).json({
       status: 'success',
@@ -69,6 +70,13 @@ exports.login = async (req, res) => {
       err: err.message,
     });
   }
+};
+
+exports.isAdmin = (req, res, next) => {
+  if (!req.auth || req.auth.role !== 'admin') {
+    return res.status(403).json({ message: 'Access denied. Admins only.' });
+  }
+  next();
 };
 
 // exports.protect = async (req, res, next) => {

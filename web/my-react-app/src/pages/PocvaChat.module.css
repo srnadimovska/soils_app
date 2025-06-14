@@ -1,24 +1,42 @@
 .container {
-    max-width: 500px;
+    max-width: 600px;
     margin: 2rem auto;
-    background-color: #242424;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
 }
 
 .header {
-    margin-bottom:10px ;
-    color: blue;
+    margin-bottom: 1rem ;
+    color: #444;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.chatWrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .chatBox{
-    min-height: 150px;
-    border: 1px solid #ccc;
+    flex: 1;
+    overflow-y: auto;
+    border: 1px solid #ddd;
     padding:  12px;
     margin-bottom: 12px;
     border-radius: 10px;
-    background-color: #b95252cc;
+    background-color: #f9f9f9;
 }
 .message {
-    margin: 8px 0;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
     text-align: left;
 }
 
@@ -28,27 +46,58 @@
 }
 .bubble {
     display: inline-block;
-    padding: 8px 12px;
+    padding: 10px 16px;
     border-radius: 16px;
     max-width:80%;
     word-break: break-word;
-    background: #ccc;
-    color:#cccc;
+    background: #e0e0e0;
+    color:#333;
+    font-size: 1rem;
 }
 .bubbleUser {
-    background: rgb(92, 92, 161);
-    color:aliceblue;
+    background: #4a90e2;
+    color:#fff;
 }
 
 .loading{
-    color: #b95252cc;
+    color: #999;
+    font-style: italic;
+    text-align: center;
+    padding: 5px;
 
 }
 
 .form{
     display: flex;
-    gap: 8px;
+    gap: 10px;
 }
 .input {
     flex:1;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    
+}
+.timestamp {
+  font-size: 0.7rem;
+  color: #777;
+  margin-top: 4px;
+  display: block;
+  text-align: right;
+}
+
+button {
+    padding: 10px 16px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #357bd8;
 }
